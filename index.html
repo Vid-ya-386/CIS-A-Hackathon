@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Website Change Detector 💖</title>
+<title>Website Change Detector</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
@@ -10,66 +10,63 @@
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    background: linear-gradient(135deg, #667eea, #ff9a9e);
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Glass card */
+/* Card */
 .container {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(12px);
+    background: white;
     padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    border-radius: 18px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
     text-align: center;
     width: 360px;
-    color: #333;
     animation: fadeIn 0.8s ease-in-out;
 }
 
 h1 {
     margin-bottom: 5px;
+    color: #444;
 }
 
 .subtitle {
     font-size: 14px;
+    color: #777;
     margin-bottom: 25px;
-    color: #555;
 }
 
 input {
     width: 100%;
     padding: 12px;
-    border-radius: 12px;
-    border: none;
+    border-radius: 10px;
+    border: 1px solid #ddd;
     margin-bottom: 15px;
     font-size: 14px;
-    outline: none;
 }
 
-/* Glow button */
+/* Gradient button */
 button {
     width: 100%;
     padding: 12px;
     border: none;
-    border-radius: 12px;
-    background: #ff6f91;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
     color: white;
     font-size: 15px;
     cursor: pointer;
     transition: 0.3s;
-    box-shadow: 0 0 10px #ff6f91;
 }
 
 button:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 20px #ff6f91;
+    box-shadow: 0 5px 15px rgba(255,118,150,0.4);
 }
 
-/* Result styles */
+/* Result */
 #result {
     margin-top: 20px;
     font-weight: 500;
@@ -88,7 +85,7 @@ button:hover {
 /* Spinner */
 .loading {
     border: 4px solid #f3f3f3;
-    border-top: 4px solid #ff6f91;
+    border-top: 4px solid #ff758c;
     border-radius: 50%;
     width: 25px;
     height: 25px;
@@ -99,7 +96,7 @@ button:hover {
 .footer {
     margin-top: 20px;
     font-size: 12px;
-    color: #777;
+    color: #aaa;
 }
 
 @keyframes spin {
@@ -117,8 +114,8 @@ button:hover {
 <body>
 
 <div class="container">
-    <h1>💖 Change Detector</h1>
-    <p class="subtitle">Smart website monitoring</p>
+    <h1>🔍 Change Detector</h1>
+    <p class="subtitle">Track website updates in real-time</p>
 
     <input type="text" id="url" placeholder="Enter website URL">
 
@@ -126,10 +123,10 @@ button:hover {
 
     <div id="loader"></div>
     <p id="result"></p>
-    <p id="time" style="font-size:12px;"></p>
+    <p id="time" style="font-size:12px; color:#777;"></p>
 
     <div class="footer">
-        Built with 💕 for Hackathon
+        Smart Monitoring System 🚀
     </div>
 </div>
 
@@ -141,7 +138,7 @@ function check() {
     let time = document.getElementById("time");
 
     if (url === "") {
-        result.innerText = "⚠️ Enter a URL!";
+        result.innerText = "⚠️ Please enter a URL";
         result.className = "error";
         result.style.opacity = 1;
         return;
@@ -157,10 +154,10 @@ function check() {
         let changed = Math.random() > 0.5;
 
         if (changed) {
-            result.innerText = "⚠️ Website changed!";
+            result.innerText = "⚠️ Website content changed!";
             result.className = "error";
         } else {
-            result.innerText = "✅ No changes detected!";
+            result.innerText = "✅ No significant changes detected";
             result.className = "success";
         }
 
