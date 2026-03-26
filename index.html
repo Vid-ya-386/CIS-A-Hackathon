@@ -37,7 +37,6 @@ body {
 h1 {
     margin-bottom: 8px;
     color: #444;
-    font-weight: 600;
 }
 
 .subtitle {
@@ -54,7 +53,6 @@ input {
     border: 1px solid #ddd;
     margin-bottom: 15px;
     font-size: 14px;
-    transition: 0.2s;
 }
 
 input:focus {
@@ -108,10 +106,21 @@ button:hover {
     margin: 15px auto;
 }
 
-/* Time */
-#time {
-    font-size: 12px;
-    color: #777;
+/* Emoji animation */
+.emoji {
+    position: fixed;
+    top: -20px;
+    font-size: 20px;
+    animation: fall linear forwards;
+    pointer-events: none;
+    z-index: 999;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
 }
 
 /* Footer */
@@ -119,6 +128,11 @@ button:hover {
     margin-top: 20px;
     font-size: 12px;
     color: #aaa;
+}
+
+#time {
+    font-size: 12px;
+    color: #777;
 }
 
 /* Animations */
@@ -154,6 +168,27 @@ button:hover {
 </div>
 
 <script>
+function spawnEmojis(symbol) {
+    for (let i = 0; i < 15; i++) {
+        let emoji = document.createElement("div");
+        emoji.className = "emoji";
+        emoji.innerText = symbol;
+
+        emoji.style.left = Math.random() * 100 + "vw";
+
+        let duration = Math.random() * 2 + 2;
+        emoji.style.animationDuration = duration + "s";
+
+        emoji.style.animationDelay = Math.random() + "s";
+
+        document.body.appendChild(emoji);
+
+        setTimeout(() => {
+            emoji.remove();
+        }, duration * 1000);
+    }
+}
+
 function check() {
     let url = document.getElementById("url").value;
     let result = document.getElementById("result");
@@ -179,9 +214,11 @@ function check() {
         if (changed) {
             result.innerText = "⚠️ Website content changed!";
             result.className = "error";
+            spawnEmojis("💔");
         } else {
             result.innerText = "✅ No significant changes detected";
             result.className = "success";
+            spawnEmojis("🩷");
         }
 
         result.style.opacity = 1;
