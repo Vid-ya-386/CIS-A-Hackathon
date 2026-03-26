@@ -20,17 +20,24 @@ body {
 /* Card */
 .container {
     background: white;
-    padding: 40px;
-    border-radius: 18px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    padding: 45px;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
     text-align: center;
-    width: 360px;
+    width: 380px;
     animation: fadeIn 0.8s ease-in-out;
+    transition: 0.3s;
 }
 
+.container:hover {
+    transform: translateY(-5px);
+}
+
+/* Title */
 h1 {
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     color: #444;
+    font-weight: 600;
 }
 
 .subtitle {
@@ -39,21 +46,29 @@ h1 {
     margin-bottom: 25px;
 }
 
+/* Input */
 input {
     width: 100%;
-    padding: 12px;
-    border-radius: 10px;
+    padding: 13px;
+    border-radius: 12px;
     border: 1px solid #ddd;
     margin-bottom: 15px;
     font-size: 14px;
+    transition: 0.2s;
 }
 
-/* Gradient button */
+input:focus {
+    border-color: #ff7eb3;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255,126,179,0.4);
+}
+
+/* Button */
 button {
     width: 100%;
-    padding: 12px;
+    padding: 13px;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     background: linear-gradient(135deg, #ff758c, #ff7eb3);
     color: white;
     font-size: 15px;
@@ -62,8 +77,8 @@ button {
 }
 
 button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(255,118,150,0.4);
+    transform: scale(1.04);
+    box-shadow: 0 8px 20px rgba(255,118,150,0.5);
 }
 
 /* Result */
@@ -87,18 +102,26 @@ button:hover {
     border: 4px solid #f3f3f3;
     border-top: 4px solid #ff758c;
     border-radius: 50%;
-    width: 25px;
-    height: 25px;
+    width: 26px;
+    height: 26px;
     animation: spin 1s linear infinite;
     margin: 15px auto;
 }
 
+/* Time */
+#time {
+    font-size: 12px;
+    color: #777;
+}
+
+/* Footer */
 .footer {
     margin-top: 20px;
     font-size: 12px;
     color: #aaa;
 }
 
+/* Animations */
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -115,7 +138,7 @@ button:hover {
 
 <div class="container">
     <h1>🔍 Change Detector</h1>
-    <p class="subtitle">Track website updates in real-time</p>
+    <p class="subtitle">Track website updates in real-time 💕</p>
 
     <input type="text" id="url" placeholder="Enter website URL">
 
@@ -123,10 +146,10 @@ button:hover {
 
     <div id="loader"></div>
     <p id="result"></p>
-    <p id="time" style="font-size:12px; color:#777;"></p>
+    <p id="time"></p>
 
     <div class="footer">
-        Smart Monitoring System 🚀
+        Built with 💖 for Hackathon
     </div>
 </div>
 
